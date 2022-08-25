@@ -1,0 +1,4 @@
+Application Execution Flow :
+    We have cart, which has three cart items, Inside our cart  we have a state, Which has  products which is an array. We are passing each products as props , Depending on the functionality cart item raise an event. Now what card do is is it goes to the array does the functionality and calls setState. The state State cause the rerender of our cart component, When it rerenders  prop with new data.
+
+
