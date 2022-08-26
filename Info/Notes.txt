@@ -2,3 +2,42 @@ Application Execution Flow :
     We have cart, which has three cart items, Inside our cart  we have a state, Which has  products which is an array. We are passing each products as props , Depending on the functionality cart item raise an event. Now what card do is is it goes to the array does the functionality and calls setState. The state State cause the rerender of our cart component, When it rerenders  prop with new data.
 
 
+Firebase : is a NoSQL cloud based db.
+NoSQL db examples : MongoDB, Redis, Firebase
+
+- Cloud Firestore, uses documents to store data
+
+What problems do real time databases solve for us,-
+    --> Data Synchronisation
+    say, u r accessing a server ( which accesses a db ) from 3 devices. When u make change in any of the devices, in that particular device the changes would reflect but in other devices naturally it won't. To see changes in other 2 devices u need to refresh the page in those 2 devices. As the db is updated , th change will be reflected in every devices, but u need to refresh it.
+
+    --> Let's see how we counter this problem
+
+    --> Now instead of using server we will use " Cloud Firestore " which is a real time db.
+
+    --> At the very first app load all devices will make connections with Firestore via WEB SOCKET. This will make persistent connection via WEB SOCKET. All the devices will be connected all time.
+
+    --> On every change, device will send an event via WEB SOCKET to the FIRSTORE, " Hey i made these changes ".
+
+    --> Now what Firestore will do is, it will send events to the rest of the devices via web socket, " Hey, render these changes "
+
+    --> This is how Firebase helps to keep data in symc with all the devices
+
+React Component LifeCycle :
+    --> Every compo in React goes through a life cycle that is, every compo in React goes through some phases and some specific events from when the compo is born up until when compo dies or is removed from the DOM.
+
+    --> React compo goes through 3 phases.
+    1. Mounting : when the compo is rendered and when it is mounted in the DOM. EG - CONSTRUCTOR, RENDER, COMPONENTDIDMOUNT
+
+    2. Updating : when the compo is updated. EG - COMPONENTDIDUPDATE
+
+    3. UnMounting : when the compo is unmounted or destroyed from the DOM. EG - COMPONENTWILLUNMOUNT
+
+- render() being the pure function it can not call the setState
+
+- COMPONENTDIDMOUNT() is rendered only once when the component is created. These functions used to make API calls to attach event listeners or to listen to some external source of data or for timers
+
+- COMPONENTDIDUPDATE() it takes 2 parameters, prevProps and prevState.
+
+- COMPONENTWILLUNMOUNT() IS TRIGGERED JUST BEFORE OUR COMPO IS REMOVED FROM DOM, or just before our compo is unmounted from DOM
+
