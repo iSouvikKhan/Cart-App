@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import * as firebase from 'firebase';
-import "firebase/firestore";
+// import * as firebase from 'firebase';
+// import "firebase/firestore";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,8 +23,16 @@ const firebaseConfig = {
   appId: "1:288911661186:web:996ddcced604f7aa38bc9b"
 };
 
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+// Use these for db & auth
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+
+export { auth, db };
+
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
